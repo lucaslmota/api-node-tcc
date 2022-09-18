@@ -28,7 +28,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
   deploy:
-    name: Dploy App
+    name: Dploy App teste
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
