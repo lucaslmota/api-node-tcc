@@ -1,6 +1,8 @@
 const express = require('express');
 const { uuid } = require('uuidv4')
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 //informar que nossa api vai recber informações no formato JSON
@@ -64,6 +66,8 @@ app.delete('/projects/:id', (request, response) => {
 
     return response.status(204).send();
 });
-app.listen(3333);
+//app.listen(3333);
+
+app.listen(port, () => console.log(`HelloNode app listening on port ${port}!`))
 
 module.exports = app;
