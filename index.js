@@ -1,35 +1,34 @@
+/* eslint-disable implicit-arrow-linebreak */
 const express = require('express');
-const { uuid } = require('uuidv4')
+const { uuid } = require('uuidv4');
 
 const port = process.env.PORT || 3000;
 
 const app = express();
 
-//informar que nossa api vai recber informações no formato JSON
+// informar que nossa api vai recber informações no formato JSON
 app.use(express.json());
 
-const projects = []
+const projects = [];
 
-app.get('/projects', (request, response) => {
+app.get('/projects', (request, response) =>
     // const { title, owner } = request.query;
-    return response.json(projects);
-});
+    response.json(projects),
+);
 
 app.get('/projects/:id', (request, response) => {
-
     const { id } = request.params;
     const projectIndex = projects.findIndex(project => project.id === id);
 
     return response.json(projects[projectIndex]);
 });
 
-
 app.post('/projects', (request, response) => {
     const { title, owner } = request.body;
 
-    const project = { id: uuid(), title, owner }
+    const project = { id: uuid(), title, owner };
 
-    projects.push(project)
+    projects.push(project);
     return response.json([project]);
 });
 
@@ -40,16 +39,16 @@ app.put('/projects/:id', (request, response) => {
     const projectIndex = projects.findIndex(project => project.id === id);
 
     if (projectIndex < 0) {
-        return response.status(400).json({ error: 'Projeto não encontrado.' })
+        return response.status(400).json({ error: 'Projeto não encontrado.' });
     }
 
     const project = {
         id,
         title,
         owner,
-    }
+    };
 
-    projects[projectIndex] = project
+    projects[projectIndex] = project;
     return response.json([project]);
 });
 
@@ -59,15 +58,17 @@ app.delete('/projects/:id', (request, response) => {
     const projectIndex = projects.findIndex(project => project.id === id);
 
     if (projectIndex < 0) {
-        return response.status(400).json({ error: 'Projeto não encontrado.' })
+        return response.status(400).json({ error: 'Projeto não encontrado.' });
     }
 
-    projects.splice(projectIndex, 1)
+    projects.splice(projectIndex, 1);
 
     return response.status(204).send();
 });
-//app.listen(3333);
+// app.listen(3333);
 
-app.listen(port, () => console.log(`HelloNode app listening on port teste ${port}!`))
+app.listen(port, () =>
+    console.log(`HelloNode app listening on port teste ${port}!`),
+);
 
 module.exports = app;
