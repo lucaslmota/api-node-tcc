@@ -37,6 +37,7 @@ jobs:
     name: Dploy App teste
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions@1.1
         with:
           args: "deploy"
