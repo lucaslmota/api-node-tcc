@@ -17,15 +17,7 @@ module.exports = {
         'no-console': [
             'error',
             {
-                allow: [
-                    'info',
-                    'warn',
-                    'error',
-                    'time',
-                    'timeEnd',
-                    'log',
-                    'console',
-                ],
+                allow: ['info', 'warn', 'error', 'time', 'timeEnd', 'console'],
             },
         ],
         'no-duplicate-imports': 'error',
