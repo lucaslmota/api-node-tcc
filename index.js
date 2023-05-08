@@ -12,7 +12,7 @@ app.use(express.json());
 const projects = [];
 
 app.get('/projects', (request, response) =>
-    // const { title, owner } = request.query;
+    // const { title, owner } = request.query teste;
     response.json(projects),
 );
 
